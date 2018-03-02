@@ -54,6 +54,7 @@ class ArticleController extends Controller
 
             $article = new Article();
             $article->setTitle($data->getTitle());
+            $article->setCode("AR");
             $article->setContent($data->getContent());
 
             // tell Doctrine you want to (eventually) save the Product (no queries yet)
@@ -73,17 +74,17 @@ class ArticleController extends Controller
     /**
      * Matches /article/*
      *
-     * @Route("/article/show/{id}", name="article_show")
+     * @Route("/article/show/{slug}", name="article_show")
      */
-    public function show($id)
+    public function show($slug)
     {
         $article = $this->getDoctrine()
             ->getRepository(Article::class)
-            ->find($id);
+            ->findOneBy(array("slug"=>$slug));
 
         if (!$article) {
             throw $this->createNotFoundException(
-                'No article found for id '.$id
+                'No article found for slug '.$slug
             );
         }
 

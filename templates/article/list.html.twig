@@ -13,6 +13,7 @@
 			    	<tr>
 			    		<td>ID</td>
 			    		<td>Title</td>
+			    		<td>Slug</td>
 			    		<td>Action</td>
 			    	</tr>
 			    </thead>
@@ -21,10 +22,11 @@
 			    	<tr>
 			    		<td>{{ data.id }}</td>
 			    		<td>{{ data.title }}</td>
+			    		<td>{{ data.slug }}</td>
 			    		<td>
 			    			<a href="/article/edit/{{data.id}}">Edit</a>|
 			    			<a href="/article/delete/{{data.id}}">Delete</a>|
-			    			<a href="/article/show/{{data.id}}">show</a>
+			    			<a href="{{ path('article_show', {'slug': data.slug}) }}">show</a>
 			    		</td>
 			    	</tr>
 			    	{% endfor %}
