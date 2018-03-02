@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Article</title>
+    </head>
+    <body>
+    	<div class="container">
+    		<a href="/article/add" class="btn button btn-success">Add Article</a>
+	        <div class="table-responsive">
+			  <table class="table" border="1" style="width: 100%">
+			    <thead>
+			    	<tr>
+			    		<td>ID</td>
+			    		<td>Title</td>
+			    		<td>Action</td>
+			    	</tr>
+			    </thead>
+			    <tbody>
+			    	{% for data in article %}
+			    	<tr>
+			    		<td>{{ data.id }}</td>
+			    		<td>{{ data.title }}</td>
+			    		<td>
+			    			<a href="/article/edit/{{data.id}}">Edit</a>|
+			    			<a href="/article/delete/{{data.id}}">Delete</a>|
+			    			<a href="/article/show/{{data.id}}">show</a>
+			    		</td>
+			    	</tr>
+			    	{% endfor %}
+			    </tbody>
+			  </table>
+			</div>
+    	</div>
+    </body>
+</html>
